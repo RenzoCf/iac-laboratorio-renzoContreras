@@ -1,6 +1,6 @@
 variable "env" {
-    description = "Entorno de despliegue (dev, qa, prod)"
-    type = string
+  description = "Entorno de despliegue (dev, qa, prod)"
+  type        = string
 }
 
 variable "suffix" {
