@@ -21,3 +21,12 @@ module "sqs" {
   source = "./modules/sqs"
   env    = var.env
 }
+
+module "lambdas" {
+  source          = "./modules/lambdas"
+  env             = var.env
+  upload_role_arn = module.iam.upload_lambda_role_arn
+  crop_role_arn   = module.iam.crop_lambda_role_arn
+  bucket_id       = module.s3.bucket_id
+  queue_arn       = module.sqs.queue_arn
+}
