@@ -1,16 +1,23 @@
 # terraform/main.tf
 
-# Llamada al módulo de IAM para crear los roles
 module "iam" {
   source = "./modules/iam"
   env    = var.env
   suffix = var.suffix
 }
 
-# Llamada al módulo de S3 para crear el bucket
 module "s3" {
-  source = "./modules/s3"
+  source = "./modules/s3"  # <--- REVISA QUE ESTA LÍNEA ESTÉ ASÍ
   env    = var.env
   suffix = var.suffix
 }
 
+module "vpc" {
+  source = "./modules/vpc"
+  env    = var.env
+}
+
+module "sqs" {
+  source = "./modules/sqs"
+  env    = var.env
+}
